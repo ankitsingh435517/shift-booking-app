@@ -1,0 +1,18 @@
+.filter-main-wrapper{
+    padding: 16px;
+    width: 20%;
+}
+
+.clear{
+    margin-left: 2.5rem;
+    margin-top: 2rem;
+}
+
+.clear button{
+    padding: 6px 24px;
+    background-color: #f7f8fb;
+    border: 1px solid gray;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}

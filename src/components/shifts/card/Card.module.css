@@ -1,0 +1,12 @@
+.card-main-wrapper{
+    border: 1px solid #cbd2e1;
+    border-radius: 10px;
+    border-collapse: collapse;
+    padding-inline-start: 1.5px;
+    padding-inline-end: 1.5px;
+    padding-block-start: 1.5px;
+    padding-bottom: 8rem;
+    background-color: #ffffff;
+    box-shadow: 0 0 1.5px;
+}
+

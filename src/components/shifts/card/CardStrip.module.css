@@ -1,0 +1,101 @@
+.heading-strip-description, .body-strip{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #cbd2e1;
+    background-color: #f7f8fb;
+    padding: 0 16px;
+    height: 40px;
+}
+
+.border-round{
+    /* border: 1px solid red;
+    border-radius: 15px; */
+}
+
+.heading-strip-description h3{
+    color: #4f6c92;
+}
+
+.heading-strip-description div{
+    margin-left: 16px;
+    color: #a4b8d3;
+    font-size: 14px;
+}
+
+.body-strip{
+    justify-content: space-between;
+    height: 80px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #cbd2e1;
+
+}
+
+.body-strip .time-city p{
+   margin: 2px;
+   font-weight: 500;
+}
+
+.body-strip .time-city > p:first-child{
+    font-size: 18px;
+    color: #4f6c92;
+}
+
+.body-strip .time-city > p:last-child{
+    font-size: 16px;
+   color: #a4b8d3;
+
+}
+
+.body-strip > div:last-child{
+    display: flex;
+    align-items: center;
+    
+}
+
+.body-strip > div:last-child button{
+    margin-left: 32px;
+}
+
+.body-strip > div:last-child h4{
+    color: #4f6c92;
+}
+
+
+
+.button{
+    padding: 10px 26px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    font-weight: 800;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: .3s all ease-in-out;
+    width: 110px;
+}
+
+.cancel-button{
+    border-color: #fe93b3;
+    color: #e2006a;
+}
+
+.cancel-button:hover{
+    background-color: #eed2df;
+}
+
+.book-button{
+    border-color: #55cb82;
+    color: #16a64d;
+}
+
+.book-button:hover{
+    background-color: #caefd8;
+}
+
+.disabled{
+    cursor: not-allowed;
+    opacity: 40%;
+}
+
+.disabled:hover{
+    background-color: #fff;
+}
