@@ -1,10 +1,10 @@
 import React from "react";
 
 const SingleFilter = ({ title, data }) => {
-  const options = data.map((option) => (
-    <li>
+  const options = data.map((option, idx) => (
+    <li key={idx}>
       <input id={option} type="checkbox" />
-      <label for={option}>{option}</label>
+      <label htmlFor={option}>{option}</label>
     </li>
   ));
   return (

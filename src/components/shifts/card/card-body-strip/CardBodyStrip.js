@@ -11,13 +11,13 @@ const CardBodyStrip = ({ startTime, endTime, city, type, disabled }) => {
         <p>{city}</p>
       </div>
       <div>
-        <h4>{type === "Booked" && type}</h4>
+        <h4>{type === true && 'Booked'}</h4>
         <button
           className={`${styles["button"]} ${
-            type === "Booked" ? styles["cancel-button"] : styles["book-button"]
+            type === true ? styles["cancel-button"] : styles["book-button"]
           } ${disabled === "true" && styles["disabled"]}`}
         >
-          {type === "Booked" ? "Cancel" : "Book"}
+          {type === true ? "Cancel" : "Book"}
         </button>
       </div>
     </div>

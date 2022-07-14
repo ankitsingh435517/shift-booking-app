@@ -7,7 +7,7 @@ const CardHeadingStrip = ({ Date, duration, shifts, borderRound }) => {
       <div className={styles["heading-strip-description"]}>
         <h3>{Date}</h3>
         <div>
-          <span>{shifts}, </span>
+          <span>{shifts} {`${shifts > 1 ? 'shifts' : 'shift'}`}, </span>
           <span>{duration}</span>
         </div>
       </div>
