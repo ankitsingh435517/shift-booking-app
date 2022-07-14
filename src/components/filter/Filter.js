@@ -13,7 +13,6 @@ const Filter = () => {
       <div className={styles["filter-wrapper"]}>
         <SingleFilter title="Time" data={time} />
         <SingleFilter title="Location" data={location} />
-        <SingleFilter title="Type" data={type} />
         <div className={styles["clear"]}>
           <button>Clear All</button>
         </div>

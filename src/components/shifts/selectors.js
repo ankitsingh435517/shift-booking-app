@@ -1,0 +1,1 @@
+export const getShiftsData = ({ shiftsReducer }) => shiftsReducer;

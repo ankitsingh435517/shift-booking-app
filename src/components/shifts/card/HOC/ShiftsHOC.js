@@ -1,9 +1,10 @@
 export default function (WrappedComponent) {
-  return ({ title, data }) => {
-    const [shiftsObj, shiftsDays] = data;
-   
+  return (props) => {
+    const { title, data } = props;
+    const { shiftsObj, shiftsDays } = data;
+
     let finalShiftsObj = shiftsObj;
-   
+
     const deepCopy = (shiftsObj, result = {}) => {
       const keys = Object.keys(shiftsObj);
       keys.forEach((key) => {
@@ -20,8 +21,7 @@ export default function (WrappedComponent) {
 
       return result;
     };
-   
-   
+
     if (title === "My shifts") {
       const myShifts = deepCopy(shiftsObj);
 
@@ -41,8 +41,8 @@ export default function (WrappedComponent) {
       finalShiftsObj = myShifts;
     }
 
-    return (
-      <WrappedComponent title={title} data={[finalShiftsObj, shiftsDays]} />
-    );
+    const shifts = { shiftsObj: finalShiftsObj, shiftsDays };
+
+    return <WrappedComponent {...props} title={title} data={shifts} />;
   };
 }

@@ -4,8 +4,17 @@ import CardHeadingStrip from "./card-heading-strip/CardHeadingStrip";
 import styles from "./Card.module.css";
 import ShiftsHOC from "./HOC/ShiftsHOC";
 
-const Card = ({ title, data }) => {
-  const [shiftsObj, shiftsDays] = data;
+const Card = (props) => {
+  const { title, data } = props;
+  const { shiftsObj, shiftsDays } = data;
+
+  let handleShiftMethods = {};
+  if (title === "My shifts") {
+    handleShiftMethods.cancel = props.handleCancelShift;
+  } else {
+    handleShiftMethods.cancel = props.handleCancelShift;
+    handleShiftMethods.book = props.handleBookShift;
+  }
 
   return (
     <div className={styles["card-main-wrapper"]}>
@@ -14,7 +23,7 @@ const Card = ({ title, data }) => {
           <>
             <CardHeadingStrip
               borderRound="true"
-              Date={shiftDay}
+              Date={shiftsObj[shiftDay].date}
               shifts={shiftsObj[shiftDay].totalShifts}
               duration={shiftsObj[shiftDay].getInHoursAndMinutes(
                 shiftsObj[shiftDay].totalHours
@@ -30,6 +39,8 @@ const Card = ({ title, data }) => {
                   type={shift.booked}
                   disabled="false"
                   key={shift.id}
+                  shiftId={shift.id}
+                  handleMethods={handleShiftMethods}
                 />
               );
             })}
