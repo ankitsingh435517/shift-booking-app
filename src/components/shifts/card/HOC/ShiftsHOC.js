@@ -1,26 +1,17 @@
+import { sortShiftsByTime, deepCopy, markUnavailableShifts } from '../../shifts-main/utils/helpers';
+
 export default function (WrappedComponent) {
   return (props) => {
     const { title, data } = props;
     const { shiftsObj, shiftsDays } = data;
 
+    // sorts the data by start-time and endtime
+    sortShiftsByTime(shiftsObj, shiftsDays);
+    
+    // marks all shifts as unavailable if found out of spec
+    markUnavailableShifts(shiftsObj, shiftsDays);
+
     let finalShiftsObj = shiftsObj;
-
-    const deepCopy = (shiftsObj, result = {}) => {
-      const keys = Object.keys(shiftsObj);
-      keys.forEach((key) => {
-        if (shiftsObj[key] instanceof Array) {
-          result[key] = [];
-          deepCopy(shiftsObj[key], result[key]);
-        } else if (typeof shiftsObj[key] === "object") {
-          result[key] = {};
-          deepCopy(shiftsObj[key], result[key]);
-        } else {
-          result[key] = shiftsObj[key];
-        }
-      });
-
-      return result;
-    };
 
     if (title === "My shifts") {
       const myShifts = deepCopy(shiftsObj);

@@ -6,8 +6,8 @@ const CardBodyStrip = ({
   endTime,
   city,
   type,
-  disabled,
   shiftId,
+  availability,
   handleMethods,
 }) => {
   return (
@@ -19,15 +19,23 @@ const CardBodyStrip = ({
         <p>{city}</p>
       </div>
       <div>
-        <h4>{type === true && "Booked"}</h4>
+        <h4>
+          {availability.isAvailable === true
+            ? type === true
+              ? "Booked"
+              : ""
+            : availability.reason}
+        </h4>
         <button
           className={`${styles["button"]} ${
             type === true ? styles["cancel-button"] : styles["book-button"]
-          } ${disabled === "true" && styles["disabled"]}`}
+          } ${availability.isAvailable === false && styles["disabled"]}`}
           onClick={
-            type === true
-              ? () => handleMethods.cancel(shiftId)
-              : () => handleMethods.book(shiftId)
+            availability.isAvailable === true
+              ? type === true
+                ? () => handleMethods.cancel(shiftId)
+                : () => handleMethods.book(shiftId)
+              : ""
           }
         >
           {type === true ? "Cancel" : "Book"}

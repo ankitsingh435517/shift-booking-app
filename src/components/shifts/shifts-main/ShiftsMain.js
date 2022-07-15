@@ -55,6 +55,7 @@ class ShiftsMain {
     return shifts;
   };
 
+  // for every single shift in shifts array
   transformShift = (shift) => {
     const epochStart = shift.startTime;
     const startDateObj = this.dateConverter(epochStart);
@@ -65,6 +66,11 @@ class ShiftsMain {
     shift.endTime = endDateObj;
 
     shift.hours = this.getHours(shift.startTime.epoch, shift.endTime.epoch);
+    
+    shift.availability = {
+      isAvailable: true,
+      reason: ''
+    }
   };
 
   uniqueEpochDays = (shifts) => {
@@ -138,7 +144,7 @@ export default ShiftsMain;
 
 
 // ---------------------------------
-// look of myshifts
+// look of shifts
 
 // const shiftsObj = {
 //   "may 06": {

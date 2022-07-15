@@ -8,19 +8,19 @@ export const useShifts = () => {
   const shifts = useSelector(getShiftsData);
 
   useEffect(() => {
-      dispatch(getShifts());
+    dispatch(getShifts());
   }, [dispatch]);
 
   const handleCancelShift = (shiftId) => {
-    dispatch(cancelShift({ id: shiftId}));
-  }
+    dispatch(cancelShift({ id: shiftId }));
+  };
 
   const handleBookShift = (shiftId) => {
-    dispatch(bookShift({id: shiftId}));
-  }
+    dispatch(bookShift({ id: shiftId }));
+  };
   return {
     shifts,
     handleBookShift,
-    handleCancelShift
-  }
+    handleCancelShift,
+  };
 };

@@ -71,9 +71,14 @@ export const getShifts = (params) => async (dispatch) => {
 
 export const cancelShift = (params) => async (dispatch) => {
   try {
-    // api call to cancel by -- param.shiftId
-    // if success dispatch(getShifts)
-    return true;
+    const response = await api.post(apiEndPoints.cancelShift(params.id), {});
+    const { statusText } = response;
+
+    if (statusText === "OK") {
+      dispatch(getShifts());
+      return true;
+    }
+    return false;
   } catch (err) {
     return false;
   }
@@ -82,9 +87,15 @@ export const cancelShift = (params) => async (dispatch) => {
 export const bookShift = (params) => async (dispatch) => {
   try {
     const response = await api.post(apiEndPoints.bookShift(params.id), {});
-    
-    return true;
+    const { statusText } = response;
+
+    if (statusText === "OK") {
+      dispatch(getShifts());
+      return true;
+    }
+    return false;
   } catch (err) {
     return false;
   }
 };
+

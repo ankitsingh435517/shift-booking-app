@@ -10,10 +10,6 @@ const shiftsReducer = (state = initialState, action) => {
         shiftsDays: action.payload.shiftsDays,
         shiftsObj: action.payload.shiftsObj,
       };
-    case "BOOK":
-      return state;
-    case "CANCEL":
-      return state;
     default:
       return state;
   }

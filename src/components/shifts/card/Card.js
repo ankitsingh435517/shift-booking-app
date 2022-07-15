@@ -37,9 +37,9 @@ const Card = (props) => {
                   endTime={shift.endTime.time}
                   city={shift.area}
                   type={shift.booked}
-                  disabled="false"
                   key={shift.id}
                   shiftId={shift.id}
+                  availability={shift.availability}
                   handleMethods={handleShiftMethods}
                 />
               );

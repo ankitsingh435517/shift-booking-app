@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Button from "./button/Button";
 import Card from "./card/Card";
 import styles from "./Shifts.module.css";
