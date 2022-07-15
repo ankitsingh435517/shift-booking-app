@@ -5,7 +5,7 @@ import Shifts from './components/shifts/Shifts';
 function App() {
   return (
     <div className="App">
-      <Filter />
+      {/* <Filter /> */}
       <Shifts />
     </div>
   );

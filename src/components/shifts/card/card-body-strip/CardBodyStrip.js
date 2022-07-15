@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../CardStrip.module.css";
 
 const CardBodyStrip = ({
@@ -10,6 +10,21 @@ const CardBodyStrip = ({
   availability,
   handleMethods,
 }) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleOnChange = (type, shiftId) => {
+    try {
+      setLoading(true);
+      if (type === "cancel") {
+        handleMethods.cancel(shiftId);
+      } else {
+        handleMethods.book(shiftId);
+      }
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+    }
+  };
   return (
     <div className={styles["body-strip"]}>
       <div className={styles["time-city"]}>
@@ -33,15 +48,33 @@ const CardBodyStrip = ({
           onClick={
             availability.isAvailable === true
               ? type === true
-                ? () => handleMethods.cancel(shiftId)
-                : () => handleMethods.book(shiftId)
-              : ""
+                ? () => handleOnChange("cancel", shiftId)
+                : () => handleOnChange("book", shiftId)
+              : null
           }
         >
-          {type === true ? "Cancel" : "Book"}
+          {loading ? (
+            <Spinner type={type === true ? "Cancel" : "Book"} />
+          ) : type === true ? (
+            "Cancel"
+          ) : (
+            "Book"
+          )}
         </button>
       </div>
     </div>
+  );
+};
+
+const Spinner = ({ type }) => {
+  return (
+    <img
+      src={
+        type === "cancel"
+          ? "assets/spinner_red.svg"
+          : "assets/spinner_green.svg"
+      }
+    />
   );
 };
 

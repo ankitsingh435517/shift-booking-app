@@ -1,9 +1,9 @@
 import React from "react";
 
-const SingleFilter = ({ title, data }) => {
+const SingleFilter = ({ title, data, handleFilter }) => {
   const options = data.map((option, idx) => (
     <li key={idx}>
-      <input id={option} type="checkbox" />
+      <input className={title} name={option} id={option} type="checkbox" onChange={handleFilter} />
       <label htmlFor={option}>{option}</label>
     </li>
   ));

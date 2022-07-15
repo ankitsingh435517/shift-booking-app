@@ -45,14 +45,12 @@ export const setShifts = (payload) => ({
   payload,
 });
 
-export const structureShifts = (data, dispatch) => {
+export const structureShifts = (data) => {
   const shiftsMain = new ShiftsMain(data);
 
   const shiftsData = shiftsMain.shiftsInit();
 
-  const [shiftsObj, shiftsDays] = shiftsData;
-
-  dispatch(setShifts({ shiftsDays, shiftsObj }));
+  return shiftsData;
 };
 
 export const getShifts = (params) => async (dispatch) => {
@@ -60,7 +58,8 @@ export const getShifts = (params) => async (dispatch) => {
     const response = await api.get(apiEndPoints.getShifts);
     const { statusText, data } = response;
     if (statusText === "OK") {
-      structureShifts(data, dispatch);
+      const [shiftsObj, shiftsDays] = structureShifts(data);
+      dispatch(setShifts({ shiftsDays, shiftsObj }));
       return true;
     }
     return false;
@@ -98,4 +97,3 @@ export const bookShift = (params) => async (dispatch) => {
     return false;
   }
 };
-

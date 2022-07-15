@@ -9,4 +9,5 @@ li {
 .App{
   display: flex;
   justify-content: center;
+  background-color: #f1f4f8;
 }
